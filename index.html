@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảo Long Mobile - Thế Giới Smartphone Chính Hãng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER GIAO DIỆN CHUẨN CÓ LOGO ẢNH -->
+    <header>
+        <div class="header-container">
+            <div class="header-logo-box">
+                <div class="logo-img-wrapper">
+                    <img src="anh1.png" alt="Logo Bảo Long Mobile">
+                </div>
+                <div class="header-title-box">
+                    <h1><a href="index.html">BẢO LONG MOBILE</a></h1>
+                    <p>Cùng bạn trải nghiệm công nghệ đỉnh cao và giá tốt nhất</p>
+                </div>
+            </div>
+            <div class="header-cart" onclick="toggleCartModal()">
+                🛒 Giỏ hàng (<span id="cartCount">0</span>)
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html" class="active">Trang chủ</a>
+            <a href="chinhsach.html">Chính sách bảo hành</a>
+            <a href="lichsu.html">Lịch sử giao dịch</a>
+            <a href="#phone-list">Sản phẩm</a>
+            <a href="#contact">Liên hệ</a>
+        </nav>
+    </header>
+
+    <!-- BANNER HERO -->
+    <section class="hero-banner">
+        <div class="hero-text-box">
+            <h2>Khám phá Smartphone mới<br>theo phong cách của bạn</h2>
+            <p>Những siêu phẩm công nghệ hàng đầu, ưu đãi giảm giá lên đến 30%<br>Giao hàng siêu tốc trong 3 ngày làm việc!</p>
+            <a href="#phone-list" class="btn-hero">Khám phá điện thoại →</a>
+        </div>
+    </section>
+
+    <!-- SẢN PHẨM & BỘ LỌC ĐÔI -->
+    <div class="main-wrapper" id="phone-list">
+        <h2 class="main-title">Điện thoại nổi bật</h2>
+        <p class="sub-heading">Khám phá 12 mẫu smartphone được ưa chuộng nhất cùng Bảo Long Mobile</p>
+
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Tìm kiếm điện thoại (iPhone, Samsung, Xiaomi...)" oninput="filterPhones()">
+        </div>
+
+        <div class="filter-wrapper">
+            <div class="select-item">
+                <label for="brandSelect">Hãng sản xuất:</label>
+                <select id="brandSelect" onchange="filterPhones()">
+                    <option value="all">Tất cả thương hiệu</option>
+                    <option value="Apple">Apple (iPhone)</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Xiaomi">Xiaomi</option>
+                    <option value="OPPO">OPPO</option>
+                </select>
+            </div>
+
+            <div class="select-item">
+                <label for="priceSelect">Mức giá:</label>
+                <select id="priceSelect" onchange="filterPhones()">
+                    <option value="all">Tất cả mức giá</option>
+                    <option value="under5">Dưới 5 triệu</option>
+                    <option value="5to15">5 – 15 triệu</option>
+                    <option value="over15">Trên 15 triệu</option>
+                </select>
+            </div>
+        </div>
+
+        <section class="tour-list-grid" id="productGrid">
+            <!-- Đổ tự động 12 sản phẩm từ script.js -->
+        </section>
+    </div>
+
+    <!-- FOOTER CHUẨN MẪU -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand-col">
+                <div class="footer-logo-wrap">
+                    <div class="logo-img-wrapper small">
+                        <img src="anh1.png" alt="Logo Bảo Long Mobile">
+                    </div>
+                    <h1>BẢO LONG MOBILE</h1>
+                </div>
+                <p>Đồng hành cùng bạn trên mọi trải nghiệm công nghệ và thiết bị số chính hãng.</p>
+            </div>
+
+            <div class="footer-info-col" id="contact">
+                <h4>Thông tin liên hệ</h4>
+                <p>Tổng đài mua hàng: 1800.1060 (Miễn phí)</p>
+                <p>Hotline hỗ trợ: 05858xxxxx</p>
+                <p>Email: Long241A010344@st.vhu.edu.vn</p>
+                <p>Địa chỉ: TP. Hồ Chí Minh, Việt Nam</p>
+            </div>
+
+            <div class="footer-info-col">
+                <h4>Về chúng tôi</h4>
+                <p>Bảo Long Mobile là hệ thống bán lẻ uy tín, cam kết máy mới 100%, bảo hành chính hãng toàn diện và giao hàng đúng hẹn.</p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            © 2026 Bảo Long Mobile. Bản quyền thuộc về Bảo Long Mobile.
+        </div>
+    </footer>
+
+    <!-- MODAL 1: GIỎ HÀNG NHANH -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content-box">
+            <span class="close-btn" onclick="closeModal('cartModal')">&times;</span>
+            <h3>🛒 Giỏ hàng của bạn</h3>
+            <div id="cartItemsList" style="margin: 15px 0;"></div>
+            <div class="cart-summary-line">
+                <span>Tổng tiền:</span>
+                <span class="price-red" id="cartTotalPrice">0 VNĐ</span>
+            </div>
+            <button id="btnCheckoutModal" class="btn-proceed-checkout" onclick="openCheckoutModal()">TIẾN HÀNH THANH TOÁN →</button>
+        </div>
+    </div>
+
+    <!-- MODAL 2: BƯỚC THANH TOÁN (CHECKOUT) -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content-box">
+            <span class="close-btn" onclick="closeModal('checkoutModal')">&times;</span>
+            <h3>💳 Thông Tin Thanh Toán</h3>
+            <p style="font-size: 13px; color: #64748b; margin-bottom: 15px;">Vui lòng nhập thông tin chính xác để nhân viên giao hàng đúng hẹn.</p>
+
+            <form onsubmit="handlePaymentSubmit(event)" class="checkout-form">
+                <div class="form-group">
+                    <label>Họ và tên người nhận (*):</label>
+                    <input type="text" id="buyerName" placeholder="Ngô Bảo Long" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Số điện thoại liên lạc (*):</label>
+                    <input type="tel" id="buyerPhone" placeholder="0901234567" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Địa chỉ nhận hàng chi tiết (*):</label>
+                    <input type="text" id="buyerAddress" placeholder="Số nhà, tên đường, Phường/Xã, Quận/Huyện" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phương thức thanh toán:</label>
+                    <div class="payment-methods-box">
+                        <label>
+                            <input type="radio" name="paymentMethod" value="cod" checked>
+                            💵 Thanh toán khi nhận hàng (COD)
+                        </label>
+                        <label>
+                            <input type="radio" name="paymentMethod" value="bank">
+                            🏦 Chuyển khoản Ngân hàng / Quét mã QR Pay
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Ghi chú đơn hàng (nếu có):</label>
+                    <textarea id="buyerNote" rows="2" placeholder="Giao hàng giờ hành chính..."></textarea>
+                </div>
+
+                <div class="cart-summary-line" style="margin: 10px 0;">
+                    <span>Tổng thanh toán:</span>
+                    <span class="price-red" id="checkoutTotalSummary">0 VNĐ</span>
+                </div>
+
+                <button type="submit" class="btn-confirm-payment">HOÀN TẤT ĐẶT HÀNG</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

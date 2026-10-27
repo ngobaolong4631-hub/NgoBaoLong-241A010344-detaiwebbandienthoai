@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch Sử Giao Dịch - Bảo Long Mobile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="header-logo-box">
+                <div class="logo-img-wrapper">
+                    <img src="anh1.png" alt="Logo Bảo Long Mobile">
+                </div>
+                <div class="header-title-box">
+                    <h1><a href="index.html">BẢO LONG MOBILE</a></h1>
+                    <p>Cùng bạn trải nghiệm công nghệ đỉnh cao và giá tốt nhất</p>
+                </div>
+            </div>
+            <div class="header-cart" onclick="toggleCartModal()">
+                🛒 Giỏ hàng (<span id="cartCount">0</span>)
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html">Trang chủ</a>
+            <a href="chinhsach.html">Chính sách bảo hành</a>
+            <a href="lichsu.html" class="active">Lịch sử giao dịch</a>
+            <a href="index.html#phone-list">Sản phẩm</a>
+        </nav>
+    </header>
+
+    <main class="main-wrapper">
+        <h2 class="main-title">Lịch Sử Giao Dịch & Đơn Hàng</h2>
+        <p class="sub-heading">Theo dõi chi tiết các đơn hàng đã thanh toán cùng ngày giờ giao hàng dự kiến</p>
+
+        <div id="historyOrdersContainer"></div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand-col">
+                <div class="footer-logo-wrap">
+                    <div class="logo-img-wrapper small">
+                        <img src="anh1.png" alt="Logo Bảo Long Mobile">
+                    </div>
+                    <h1>BẢO LONG MOBILE</h1>
+                </div>
+                <p>Cung cấp trải nghiệm mua sắm minh bạch, theo dõi lộ trình đơn hàng rõ ràng.</p>
+            </div>
+            <div class="footer-info-col">
+                <h4>Hỗ trợ giao vận</h4>
+                <p>Tổng đài: 05858xxxxx(Miễn phí)</p>
+                <p>Theo dõi đơn: 0348 223 097</p>
+            </div>
+            <div class="footer-info-col">
+                <h4>Cam kết vận chuyển</h4>
+                <p>Đóng gói chuẩn chống sốc 3 lớp, bảo hiểm hàng hóa 100% khi vận chuyển.</p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            © 2026 Bảo Long Mobile. Bản quyền thuộc về Bảo Long Mobile.
+        </div>
+    </footer>
+
+    <!-- MODAL GIỎ HÀNG -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content-box">
+            <span class="close-btn" onclick="closeModal('cartModal')">&times;</span>
+            <h3>🛒 Giỏ hàng của bạn</h3>
+            <div id="cartItemsList" style="margin: 15px 0;"></div>
+            <div class="cart-summary-line">
+                <span>Tổng tiền:</span>
+                <span class="price-red" id="cartTotalPrice">0 VNĐ</span>
+            </div>
+            <button id="btnCheckoutModal" class="btn-proceed-checkout" onclick="openCheckoutModal()">TIẾN HÀNH THANH TOÁN →</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
